@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,42 +14,71 @@
       padding: 0;
     }
     body {
-      font-family: 'Cairo', Tahoma, Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #14171f;
       color: #f4f4f6;
-      line-height: 1.7;
+      line-height: 1.6;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      transition: all 0.2s ease;
+    }
+    body.ar {
+      font-family: 'Cairo', Tahoma, Arial, sans-serif;
+      line-height: 1.75;
     }
     header {
+      position: relative;
       background: linear-gradient(135deg, #d9381e, #f29f05);
-      padding: 60px 20px;
+      padding: 65px 20px 60px;
       text-align: center;
       color: #ffffff;
+    }
+    .lang-btn {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.45);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    body.ar .lang-btn {
+      right: auto;
+      left: 20px;
+    }
+    .lang-btn:hover {
+      background: rgba(0, 0, 0, 0.7);
+      transform: scale(1.03);
     }
     .studio-badge {
       display: inline-block;
       background: rgba(0, 0, 0, 0.35);
-      padding: 6px 18px;
+      padding: 6px 16px;
       border-radius: 20px;
-      font-size: 0.95rem;
-      font-weight: 700;
+      font-size: 0.9rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       margin-bottom: 15px;
     }
     h1 {
       font-size: 3.5rem;
-      font-weight: 800;
+      letter-spacing: 2px;
       margin-bottom: 10px;
       text-shadow: 2px 3px 0px rgba(0, 0, 0, 0.3);
       direction: ltr;
     }
     .tagline {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       max-width: 650px;
       margin: 0 auto;
       opacity: 0.95;
-      font-weight: 600;
     }
     main {
       max-width: 850px;
@@ -68,13 +97,12 @@
     h2 {
       color: #f29f05;
       margin-bottom: 15px;
-      font-size: 1.7rem;
-      font-weight: 700;
+      font-size: 1.6rem;
     }
     p {
       margin-bottom: 15px;
       color: #d1d5db;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
     .features {
       display: grid;
@@ -86,13 +114,16 @@
       background-color: #262b38;
       padding: 20px;
       border-radius: 8px;
+      border-left: 4px solid #d9381e;
+    }
+    body.ar .feature-box {
+      border-left: none;
       border-right: 4px solid #d9381e;
     }
     .feature-box h3 {
       color: #ffffff;
       margin-bottom: 8px;
-      font-size: 1.2rem;
-      font-weight: 700;
+      font-size: 1.15rem;
     }
     footer {
       background-color: #0e1016;
@@ -106,7 +137,6 @@
       color: #f29f05;
       text-decoration: none;
       margin: 0 10px;
-      font-weight: 600;
     }
     footer a:hover {
       text-decoration: underline;
@@ -116,51 +146,107 @@
 <body>
 
   <header>
+    <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">العربية</button>
     <div class="studio-badge">Unknown Games Studio</div>
     <h1>Goal BOO</h1>
-    <p class="tagline">تحدي كوميدي سريع ومليان حماس لتدمير الصناديق بلمسة عراقية أصيلة!</p>
+    <p class="tagline" id="tagline">Fast, hilarious 1v1 box-smashing chaos packed with authentic Iraqi humor and culture!</p>
   </header>
 
   <main>
     <section class="card">
-      <h2>عن اللعبة</h2>
-      <p>
-        أهلاً بيكم في <strong>Goal BOO</strong>، لعبة تنافسية مضحكة وممتعة من تطوير <strong>Unknown Games Studio</strong>. ادخل الساحة بمواجهة مباشرة بين لاعبين، والهدف بسيط ومباشر: دمّر وحطّم أهداف وصناديق خصمك قبل لا يدمّر صناديقك ويفوز عليك!
+      <h2 id="aboutGameTitle">About the Game</h2>
+      <p id="aboutGameP1">
+        Welcome to <strong>Goal BOO</strong>, a lighthearted and funny competitive game created by <strong>Unknown Games Studio</strong>. Step into the arena for an action-packed two-player showdown where the goal is simple: smash, blast, and destroy your opponent's target boxes before they wipe out yours!
       </p>
-      <p>
-        اللعبة تحمل روح <strong>الثقافة العراقية</strong> بكل تفاصيلها، مع أجواء شعبية مرحة، مفاجآت غير متوقعة، ولحظات ضحك وحماس تخليك تعيد اللعب مرة ورا مرة ويا أصدقائك أو لاعبين من كل العالم.
+      <p id="aboutGameP2">
+        Proudly carrying the spirit of <strong>Iraqi culture</strong>, every match brings lively local vibes, playful surprises, and unpredictable moments that will keep you and your rival laughing until the final box falls.
       </p>
 
       <div class="features">
         <div class="feature-box">
-          <h3>تحدي 1 ضد 1</h3>
-          <p>واجه خصمك وجهاً لوجه، دافع عن منطقتك وهاجم بكل قوتك حتى تفجّر كل صناديق الهدف الخاصة بيه.</p>
+          <h3 id="feat1Title">1v1 Box Mayhem</h3>
+          <p id="feat1Desc">Go head-to-head against a rival player. Defend your turf while launching chaotic attacks to shatter their goal boxes.</p>
         </div>
         <div class="feature-box">
-          <h3>كوميديا وضحك بلا حدود</h3>
-          <p>مواقف مضحكة، فيزياء مجنونة، وقلبات مفاجئة تخلي كل جولة مليانة حماس وونسة.</p>
+          <h3 id="feat2Title">Pure Comedy</h3>
+          <p id="feat2Desc">Expect funny reactions, wild physics, and hilarious comebacks in fast-paced matches anyone can jump into.</p>
         </div>
         <div class="feature-box">
-          <h3>نكهة وثقافة عراقية</h3>
-          <p>تصاميم وأجواء مستوحاة من التراث والروح العراقية المرحة تضيف طابع خاص ومميز للعبة.</p>
+          <h3 id="feat3Title">Iraqi Culture & Flavor</h3>
+          <p id="feat3Desc">Celebrate Iraqi heritage through vibrant themes, local humor, and energetic style woven right into the arena.</p>
         </div>
       </div>
     </section>
 
     <section class="card">
-      <h2>عن Unknown Games Studio</h2>
-      <p>
-        <strong>Unknown Games Studio</strong> هو استوديو مستقل لتطوير الألعاب، يهدف إلى صناعة ألعاب جماعية ممتعة وبسيطة تجمع اللاعبين والأصدقاء وتنقل الثقافة المحلية بأسلوب عصري ومضحك.
+      <h2 id="aboutStudioTitle">About Unknown Games Studio</h2>
+      <p id="aboutStudioDesc">
+        <strong>Unknown Games Studio</strong> is an independent game development studio dedicated to crafting fun, accessible multiplayer experiences that bring friends and players together around the world.
       </p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2026 Unknown Games Studio. جميع الحقوق محفوظة.</p>
+    <p id="copyright">&copy; 2026 Unknown Games Studio. All rights reserved.</p>
     <p>
-      <a href="privacy.html">سياسة الخصوصية</a>
+      <a href="privacy.html" id="privacyLink">Privacy Policy</a>
     </p>
   </footer>
 
-</body>
-</html>
+  <script>
+    const translations = {
+      en: {
+        dir: "ltr",
+        btn: "العربية",
+        tagline: "Fast, hilarious 1v1 box-smashing chaos packed with authentic Iraqi humor and culture!",
+        aboutGameTitle: "About the Game",
+        aboutGameP1: "Welcome to <strong>Goal BOO</strong>, a lighthearted and funny competitive game created by <strong>Unknown Games Studio</strong>. Step into the arena for an action-packed two-player showdown where the goal is simple: smash, blast, and destroy your opponent's target boxes before they wipe out yours!",
+        aboutGameP2: "Proudly carrying the spirit of <strong>Iraqi culture</strong>, every match brings lively local vibes, playful surprises, and unpredictable moments that will keep you and your rival laughing until the final box falls.",
+        feat1Title: "1v1 Box Mayhem",
+        feat1Desc: "Go head-to-head against a rival player. Defend your turf while launching chaotic attacks to shatter their goal boxes.",
+        feat2Title: "Pure Comedy",
+        feat2Desc: "Expect funny reactions, wild physics, and hilarious comebacks in fast-paced matches anyone can jump into.",
+        feat3Title: "Iraqi Culture & Flavor",
+        feat3Desc: "Celebrate Iraqi heritage through vibrant themes, local humor, and energetic style woven right into the arena.",
+        aboutStudioTitle: "About Unknown Games Studio",
+        aboutStudioDesc: "<strong>Unknown Games Studio</strong> is an independent game development studio dedicated to crafting fun, accessible multiplayer experiences that bring friends and players together around the world.",
+        copyright: "&copy; 2026 Unknown Games Studio. All rights reserved.",
+        privacyLink: "Privacy Policy"
+      },
+      ar: {
+        dir: "rtl",
+        btn: "English",
+        tagline: "تحدي كوميدي سريع ومليان حماس لتدمير الصناديق بلمسة عراقية أصيلة!",
+        aboutGameTitle: "عن اللعبة",
+        aboutGameP1: "أهلاً بيكم في <strong>Goal BOO</strong>، لعبة تنافسية مضحكة وممتعة من تطوير <strong>Unknown Games Studio</strong>. ادخل الساحة بمواجهة مباشرة بين لاعبين، والهدف بسيط ومباشر: دمّر وحطّم أهداف وصناديق خصمك قبل لا يدمّر صناديقك ويفوز عليك!",
+        aboutGameP2: "اللعبة تحمل روح <strong>الثقافة العراقية</strong> بكل تفاصيلها، مع أجواء شعبية مرحة، مفاجآت غير متوقعة، ولحظات ضحك وحماس تخليك تعيد اللعب مرة ورا مرة ويا أصدقائك أو لاعبين من كل العالم.",
+        feat1Title: "تحدي 1 ضد 1",
+        feat1Desc: "واجه خصمك وجهاً لوجه، دافع عن منطقتك وهاجم بكل قوتك حتى تفجّر كل صناديق الهدف الخاصة بيه.",
+        feat2Title: "كوميديا وضحك بلا حدود",
+        feat2Desc: "مواقف مضحكة، فيزياء مجنونة، وقلبات مفاجئة تخلي كل جولة مليانة حماس وونسة.",
+        feat3Title: "نكهة وثقافة عراقية",
+        feat3Desc: "تصاميم وأجواء مستوحاة من التراث والروح العراقية المرحة تضيف طابع خاص ومميز للعبة.",
+        aboutStudioTitle: "عن Unknown Games Studio",
+        aboutStudioDesc: "<strong>Unknown Games Studio</strong> هو استوديو مستقل لتطوير الألعاب، يهدف إلى صناعة ألعاب جماعية ممتعة وبسيطة تجمع اللاعبين والأصدقاء وتنقل الثقافة المحلية بأسلوب عصري ومضحك.",
+        copyright: "&copy; 2026 Unknown Games Studio. جميع الحقوق محفوظة.",
+        privacyLink: "سياسة الخصوصية"
+      }
+    };
+
+    let currentLang = "en";
+
+    function toggleLanguage() {
+      currentLang = currentLang === "en" ? "ar" : "en";
+      const t = translations[currentLang];
+
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = t.dir;
+      document.body.className = currentLang === "ar" ? "ar" : "";
+
+      document.getElementById("langToggle").textContent = t.btn;
+      document.getElementById("tagline").textContent = t.tagline;
+      document.getElementById("aboutGameTitle").textContent = t.aboutGameTitle;
+      document.getElementById("aboutGameP1").innerHTML = t.aboutGameP1;
+      document.getElementById("aboutGameP2").innerHTML = t.aboutGameP2;
+      document.getElementById("feat1Title").textContent = t.feat1Title;
+      document.getElementById("feat1Desc").textContent = t.feat1Desc;
